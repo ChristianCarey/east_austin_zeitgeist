@@ -8,19 +8,23 @@ class Comment < ApplicationRecord
     { "text" => all_text }.to_json
   end
 
-  # TODO this will include any record requested by either attribute, even if its other attributes don't match the selected ones 
-  
   def self.filter(args = {})
     results = nil
     args.each do |attribute, values|
+      attribute_results = nil
       unless values.nil? || values.include?("all")
         values.each do |value|
-          if results
-            results = where("#{attribute} = ?", "#{value}").or(results)
+          if attribute_results
+            attribute_results = where("#{attribute} = ?", "#{value}").or(attribute_results)
           else
-            results = where("#{attribute} = ?", "#{value}")
+            attribute_results = where("#{attribute} = ?", "#{value}")
           end
         end
+      end
+      if results && attribute_results
+        results = results.merge(attribute_results)
+      else
+        results = attribute_results
       end
     end  
     results || all

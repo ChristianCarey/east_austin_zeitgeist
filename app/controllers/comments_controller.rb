@@ -5,10 +5,10 @@ class CommentsController < ApplicationController
     @comments   = Comment.filter(category: @selected_categories, theme: @selected_themes)
     @categories = CATEGORIES
     @themes     = THEMES
-    # @scores     = get_scores
-    @scores     = MOCK_SCORES
-    # @keywords = get_keywords
-    @keywords = MOCK_KEYWORDS
+    @scores     = get_scores
+    # @scores     = MOCK_SCORES
+    @keywords   = get_keywords
+    # @keywords = MOCK_KEYWORDS
   end
 
   private
