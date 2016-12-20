@@ -9,6 +9,9 @@ class CommentsController < ApplicationController
     # @scores     = MOCK_RESPONSE
   end
 
+  def new
+  end
+
   private
 
   def get_scores
