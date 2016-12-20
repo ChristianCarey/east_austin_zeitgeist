@@ -2,17 +2,34 @@
   <h1>East Austin Zeitgeist</h1>
   <div class="row">
     <div class="col-md-6">
-      <%= pie_chart @comments.group(:category).count %>
-      <%= pie_chart @comments.group(:theme).count %>
       <%= render 'filter_form' %>
     </div>
     <div class="col-md-6">
       <h4>Emotial Tone</h4>
-        <%= column_chart @scores.emotional_tone %>
+      <%= column_chart @scores.emotional_tone %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= pie_chart @comments.group(:category).count %>
+    </div>
+    <div class="col-md-6">
       <h4>Language Tone</h4>
-        <%= column_chart @scores.language_tone %>
+      <%= column_chart @scores.language_tone %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= pie_chart @comments.group(:theme).count %>
+    </div>
+    <div class="col-md-6">
       <h4>Social Tone</h4>
-        <%= column_chart @scores.social_tone %>
+      <%= column_chart @scores.social_tone %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= bar_chart @keywords.words %>
     </div>
   </div>
 </div>
