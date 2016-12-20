@@ -11,7 +11,6 @@ class ToneAgent
                                headers: { "Content-Type" => "application/json" },
                                basic_auth: { username: ENV['tone_username'],   
                                              password: ENV['tone_password'] })
-    # ToneResponse.new(JSON.parse(response.body))
-    JSON.parse(response.body)
+    ToneResponse.new(JSON.parse(response.body))
   end
 end

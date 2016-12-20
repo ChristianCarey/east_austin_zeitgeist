@@ -9,11 +9,6 @@ class CommentsController < ApplicationController
     # @scores     = MOCK_RESPONSE
   end
 
-  def new
-    @comments = Comment.filter(category: @selected_categories, theme: @selected_themes)
-    @response = get_scores
-  end
-
   private
 
   def get_scores
