@@ -1,0 +1,16 @@
+<h5>Filter by theme<h5>
+<div class='checkbox'>
+<%= label_tag :all_themes do %>
+  <%= check_box_tag 'themes[]', "all", @selected_themes.include?("all"), id: 'all_themes' %>
+  All Themes
+<% end %>
+</div>
+<% @themes.each do |theme| %>
+  <div class="checkbox">
+  <%= label_tag theme.gsub(" ", "_").gsub(",","") do %>
+    <%= check_box_tag 'themes[]', theme, @selected_themes.include?(theme), id: theme.gsub(" ", "_").gsub(",","") %>
+    <%= theme %>
+  <% end %>
+  </div>
+<% end %>
+

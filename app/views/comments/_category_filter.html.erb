@@ -1,27 +1,16 @@
-<%= form_tag comments_path, method: :get do %>
-  <%= radio_button_tag :category, "" %>
-  <%= label_tag :category_, "All Categories" %>
-
-  <%= radio_button_tag :category, "Personal Experience" %>
-  <%= label_tag :category_Personal_Experience, "Personal Experience" %>
-
-  <%= radio_button_tag :category, "Resources"%>
-  <%= label_tag :category_Resources, "Resources" %>
-
-  <%= radio_button_tag :category, "Wisdom"%>
-  <%= label_tag :category_wisdom, "Wisdom" %>
-
-    <%= radio_button_tag :category, "Ideas I Bring"%>
-  <%= label_tag :category_Ideas_I_Bring, "Ideas I Bring" %>
-
-  <%= radio_button_tag :category, "What's Missing"%>
-  <%= label_tag :category_What_s_Missing, "What's Missing" %>
-
-  <%= radio_button_tag :category, "Why am I here"%>
-  <%= label_tag :category_Why_am_I_here, "Why am I here" %>
-
-  <%= radio_button_tag :category, "One Thing To Improve"%>
-  <%= label_tag :category_One_Thing_To_Improve, "One Thing To Improve" %>
-
-  <%= submit_tag "Filter by category" %>
+<h5>Filter by category<h5>
+<div class='checkbox'>
+<%= label_tag :all_categories do %>
+  <%= check_box_tag 'categories[]', "all", @selected_categories.include?("all"), id: 'all_categories' %>
+  All Categories
 <% end %>
+</div>
+<% @categories.each do |category| %>
+  <div class="checkbox">
+  <%= label_tag category.gsub(" ", "_").gsub("'","").gsub("?", "") do %>
+    <%= check_box_tag 'categories[]', category, @selected_categories.include?(category), id: category.gsub(" ", "_").gsub("'","").gsub("?", "") %>
+    <%= category %>
+  <% end %>
+  </div>
+<% end %>
+
