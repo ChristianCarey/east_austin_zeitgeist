@@ -10,6 +10,8 @@ class CommentsController < ApplicationController
   end
 
   def new
+    @comments = Comment.filter(category: @selected_categories, theme: @selected_themes)
+    @response = get_scores
   end
 
   private
