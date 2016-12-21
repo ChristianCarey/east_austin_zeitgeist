@@ -6,9 +6,7 @@ class CommentsController < ApplicationController
     @categories = CATEGORIES
     @themes     = THEMES
     @scores     = get_scores
-    # @scores     = MOCK_SCORES
     @keywords   = get_keywords
-    # @keywords = MOCK_KEYWORDS
   end
 
   private
@@ -28,22 +26,6 @@ class CommentsController < ApplicationController
   def get_keywords
     KeywordAgent.new.keywords_for(comments_text)
   end
-
-  mock_scores = Struct.new(:emotional_tone, :language_tone, :social_tone)
-  
-  MOCK_SCORES = mock_scores.new(
-    { anger: 1, sadness: 2 },
-    { something: 1, different: 4 },
-    { another: 2, more: 1, again: 3}
-  )
-
-  mock_keywords = Struct.new(:words)
-
-  MOCK_KEYWORDS = mock_keywords.new(
-      { word: 1 , 
-        other_word: 3,
-        new_work: 2}
-    )
 
   CATEGORIES = [ "Personal Experience", "Resources",
                  "Wisdom", "Ideas I Bring", "What's Missing",
