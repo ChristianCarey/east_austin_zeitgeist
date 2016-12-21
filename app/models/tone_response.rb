@@ -5,10 +5,20 @@ class ToneResponse
 
   def initialize(response_body)
     @response_body = response_body
-    set_tone_hashes
+    if response_body['error']
+      set_empty_hashes
+    else
+      set_tone_hashes
+    end
   end
 
   private
+
+  def set_empty_hashes
+    @emotional_tone = {}
+    @language_tone  = {}
+    @social_tone    = {}
+  end
 
   def set_tone_hashes
     set_emotional_tone

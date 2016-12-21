@@ -4,7 +4,9 @@ class KeywordResponse
   def initialize(response_body)
     @response_body = response_body
     @words = {}
-    set_words
+    unless response_body['status'] = "ERROR"
+      set_words
+    end
   end
 
   def set_words

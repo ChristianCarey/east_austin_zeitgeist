@@ -1,5 +1,10 @@
 <div class="col-md-10 col-md-offset-1">
-  <h1>East Austin Zeitgeist</h1>
+  <div class="row">
+    <div class="header">
+      <h1>East Austin Zeitgeist</h1>
+      <h4>Home | <%= link_to "About", abouts_show_path %></h4>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-6">
       <%= render 'filter_form' %>
@@ -30,6 +35,12 @@
   <div class="row">
     <div class="col-md-12">
       <%= bar_chart @keywords.words %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Sample of comments</h4>
+      <%= render @comments.limit(10)%>
     </div>
   </div>
 </div>
